@@ -20,30 +20,43 @@ statusDesRaumschiffsAnzeigen();
 
 // 4.b. Reparaturset benutzen
 function reparatursetBenutzen() {
+    if (spaceshipRepairKits <= 0) {
+        console.log("Fehler: Keine Reparatursets mehr vorhanden!");
+        return;
+    }
     spaceshipRepairKits = spaceshipRepairKits - 1;
     spaceshipHealth = spaceshipHealth + 20;
 }
 
 reparatursetBenutzen();
-statusDesRaumschiffsAnzeigen()
+statusDesRaumschiffsAnzeigen();
 
 
 
 // 4.c. Reparaturset kaufen
 function reparatursetKaufen() {
-    spaceshipCredits = spaceshipCredits - 50;
+    let preis = 50;
+    if (spaceshipCredits < preis) {
+        console.log("Fehler: Nicht genug Währung vorhanden!");
+        return;
+    }
+    spaceshipCredits = spaceshipCredits - preis;
     spaceshipRepairKits = spaceshipRepairKits + 1;
 }
 
 reparatursetKaufen();
-statusDesRaumschiffsAnzeigen()
+statusDesRaumschiffsAnzeigen();
 
 
 
 // 4.d. Schaden nehmen
-function schadenNehmen(schadens) {
-    spaceshipHealth = spaceshipHealth - schadens;
+function schadenNehmen(schadenshoehe) {
+    spaceshipHealth = spaceshipHealth - schadenshoehe;
+    if (spaceshipHealth <= 0) {
+        spaceshipHealth = 0;
+        console.log("Das Raumschiff wurde zerstört!");
+    }
 }
 
 schadenNehmen(30);
-statusDesRaumschiffsAnzeigen()
+statusDesRaumschiffsAnzeigen();
