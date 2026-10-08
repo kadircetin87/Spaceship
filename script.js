@@ -41,8 +41,8 @@ statusDesRaumschiffsAnzeigen()
 
 
 // 4.d. Schaden nehmen
-function schadenNehmen(schadenshoehe) {
-    spaceshipHealth = spaceshipHealth - schadenshoehe;
+function schadenNehmen(schadens) {
+    spaceshipHealth = spaceshipHealth - schadens;
 }
 
 schadenNehmen(30);
