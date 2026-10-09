@@ -4,9 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SpAceship Game</title>
-    <script src="script.js"></script>
-
-    
+    <script defer src="script.js"></script>
+    <!-- 1. DÜZELTME: rel="stylee" yerine "stylesheet" yapıldı -->
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body></body>
+  <body>
+    <table>
+      <tr>
+        <th>Eigenschaft</th>
+        <th>Wert</th>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td id="statusName"></td>
+      </tr>
+      <tr>
+        <td>Leben:</td>
+        <td id="statusHealt"></td>
+      </tr>
+      <tr>
+        <td>Währung:</td>
+        <td id="statusCredits"></td>
+      </tr>
+      <tr>
+        <td>Reparatursets:</td>
+        <td id="statusReapair"></td>
+      </tr>
+    </table>
+
+    <div>
+      <input type="number" id="schadenInput" placeholder="Schaden eingeben">
+      <button id="schadenButton">Schaden hinzufügen</button>
+    </div>
+
+    <div>
+      <input type="number" id="kaufInput" placeholder="Anzahl der Sets">
+      <button id="kaufButton">Reparatursets kaufen</button>
+    </div>
+
+    <div> 
+      <button id="benutzButton">Reparaturset Benutzen</button>
+    </div>
+
+    <div>
+      <p id="fehlerMeldung"></p>
+    </div>
+  </body>
 </html>
