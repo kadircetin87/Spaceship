@@ -64,17 +64,18 @@ kaufKnopf.addEventListener("click", function () {
   inputFeld.value = "";
 });
 
-// 4.d. Schaden nehmen
 function schadenNehmen(schadenshoehe) {
   spaceshipHealth = spaceshipHealth - schadenshoehe;
+  
   if (spaceshipHealth <= 0) {
     spaceshipHealth = 0;
     console.log("Das Raumschiff wurde zerstört!");
+        document.body.classList.add("game-over");
   }
-  document.body.classList.add.("game-over");
 }
 
 let schadenKopf = document.getElementById("schadenButton");
+
 schadenKopf.addEventListener("click", function () {
   let inputFeld = document.getElementById("schadenInput");
   let eingeTragenerSchaden = Number(inputFeld.value);
@@ -87,3 +88,4 @@ schadenKopf.addEventListener("click", function () {
 function zeigeFehler(nachricht) {
   document.getElementById("fehlerMeldung").innerText = nachricht;
 }
+
