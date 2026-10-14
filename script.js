@@ -6,7 +6,9 @@ let spaceshipCredits = 500;
 // let spaceshipRepairKits = 2; Array oldu*//
 // Artık 'spaceshipRepairKits = 2' değişkeni yok!
 // Onun yerine tüm eşyaları koyacağımız dinamik, boş sırt çantamız var:*//
-let spaceshipInventory = []; //*Array */
+let spaceshipInventory = ["Schild", "Reparaturkit", "Laser", "Kristall"]; //*Array */
+
+//Neu İtems Arrray verdim yukarıda/// "Schild", "Reparaturkit", "Laser", "Kristall" İtemler.
 
 //* 2. Status des Raumschiffs anzeigen *//
 // Geminin temel durum bilgilerini HTML'e yazar
@@ -123,18 +125,17 @@ function schildKaufen() {
   // 3. ARRAY KULLANIMI: Çantaya ekliyoruz
   spaceshipInventory.push("Schild");
 
-   // Başarılı olunca eski hataları siliyoruz
-  zeigeFehler(""); 
+  // Başarılı olunca eski hataları siliyoruz
+  zeigeFehler("");
 } // <-- 129. SATIRA BU PARANTEZİ KOYMALISIN! schildKaufen fonksiyonunu kapatır.
-
 
 // --- 2. BUTONU BAĞLAMA VE TETİKLEME ---
 let schildKaufKnopf = document.getElementById("schildButton");
 
 // addeventlistener değil, tek 'd' ile addEventListener yazmalısın:
 schildKaufKnopf.addEventListener("click", function () {
-  schildKaufen();  // Array'e schild ekler
-  renderStatus();  // Yeni parayı ekranda gösterir
+  schildKaufen(); // Array'e schild ekler
+  renderStatus(); // Yeni parayı ekranda gösterir
   showInventory(); // Yeni envanter listesini ekrana basar
 }); // <-- 137. SATIRDA BU PARANTEZ VE NOKTALI VİRGÜLÜ UNUTMA!
 // Envanteri HTML'de gösterme fonksiyonu
@@ -160,3 +161,34 @@ showInventory();
 // Yazılımda return sadece bir değer döndürmek için kullanılmaz. Fonksiyonun içine koyduğun bir kontrol (if) başarısız olursa, return yazarak "Hey bilgisayar, burada bir hata var, fonksiyonu hemen şimdi bitir ve aşağıdaki kodları çalıştırma!" demiş olursun. Eğer return koymasaydık, paranız eksiye düşerdi ve yine de kalkan satın alırdınız.
 // 2. .push() Fonksiyonunun Gerçek Hayattaki Karşılığı:
 // Diziler (Array) dinamik yapılardır. Başlangıçta en üstte let spaceshipInventory = []; diyerek boş bir sırt çantası açmıştık. .push("Schild") komutu, o boş çantayı açıp içine üzerinde "Schild" yazan bir karton bırakmak gibidir. Çantanın boyutu otomatik olarak 0'dan 1'e yükselir. // ARRAY Mantığını öğrenmek çok önemli..!!
+
+
+
+
+// Bu fonksiyon envanterdeki (0. sıradakini "Schild'i") siler ve uzaya fırlatır.
+function notfallAbwurf() {
+   // Kontrol: Çantada fırlatacak eşya var mı? (Uzunluğu 0'dan büyük mü?)
+  if (spaceshipInventory.length > 0) {
+    
+    zeigeFehler(""); // Eski hataları temizle
+
+    // .shift() dizinin en başındaki elemanı koparır ve 'abgeworfenesItem' içine yazar
+    let abgeworfenesItem = spaceshipInventory.shift();
+    
+    console.log("Notfall! Folgendes Item wurde im Weltall abgeworfen: " + abgeworfenesItem);
+
+  } else {
+    // Çanta boşsa fırlatacak bir şey yoktur, hatası basacak!!!!!!!
+
+    zeigeFehler("Fehler: Das Inventar ist komplett leer!");
+  }
+}
+
+// Bu fonksiyon, parametre olarak gelen eşyayı envanterin en BAŞINA (0. sıraya) ekler.
+function vipLagerung(wertvollesItem) {
+  
+  // .unshift() belirtilen elemanı dizinin en önüne sıkıştırır, diğer elemanlar bir arkaya kayar
+  spaceshipInventory.unshift(wertvollesItem);
+  
+  console.log("VIP Item am Anfang des Inventars hinzugefügt: " + wertvollesItem);
+}
